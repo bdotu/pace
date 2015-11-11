@@ -16,13 +16,14 @@ get '/hi' do
 end
 
 #puts listing from the crawl in the browser
-get '/getListings' do
+get '/getListings/:city_state' do
   crawler = CrawlerHelper.new
-  crawler.crawl
+  # puts params['city_state']
+  crawler.crawl(params['city_state'])
 end
 
 #same priniciple applies in the case of a post request
 post '/getListings' do
   crawler = CrawlerHelper.new
-  crawler.crawl
+  crawler.crawl(params[:location])
 end
