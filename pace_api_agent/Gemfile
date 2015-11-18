@@ -11,3 +11,8 @@ gem 'shotgun'
 gem 'sqlite3'
 
 gem 'restart'
+
+#Sidekiq gem to run background jobs
+gem 'sidekiq'
+#Redis Sever
+gem 'redis'
