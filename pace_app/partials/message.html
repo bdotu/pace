@@ -1,0 +1,22 @@
+<div class="modal-header">
+        <h3 class="modal-title">Compose Message</h3>
+        </div>
+        <div class="modal-body">
+            
+            <form name="messageForm">
+              <!--Subject-->
+              <div class="form-group" ng-class=" {
+					  'has-success': messageForm.subject.$pristine || messageForm.subject.$valid}">
+					    <input type="text" class="form-control" ng-model="message.subject" name="subject" placeholder="Subject">
+			  </div>
+			  <!--Message Body-->
+			  <div class="form-group" ng-class=" {
+			  'has-success': messageForm.body.$pristine || messageForm.body.$valid}">
+			  	<textarea style="resize:none" class="form-control" name="body" rows="5" ng-model="message.body" placeholder="Short Bio"></textarea>
+			  </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-disabled="!messageForm.$valid" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>

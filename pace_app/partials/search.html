@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center" style="color:darkred">Pace <br/></h1> 
+    <!--
+    <form novalidate name="searchForm" class="form-horizontal" role="form" ng-submit="submitForm()">
+      <div class="form-group has-feedback has-warning" ng-class="{
+        'has-warning': searchForm.searchTerm.$pristine,
+        'has-error': searchForm.searchTerm.$invalid && !searchForm.searchTerm.$pristine,
+        'has-success': searchForm.searchTerm.$valid
+      }">
+        <label class="control-label col-sm-3" for="searchTerm"></label>
+        <div class="col-sm-6">
+          <select class="form-control ng-pristine ng-invalid-required" ng-options="state.name for state in states track by state.abbreviation" ng-model="listings.state" required ng-change="getCities()">
+            <option value="" selected> Select State </option>
+          </select>
+          <span ng-show="searchForm.searchTerm.$pristine" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+          <span ng-show="searchForm.searchTerm.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
+          <span ng-show="searchForm.searchTerm.$invalid && !searchForm.searchTerm.$pristine" class="glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+      </div>
+
+      <div ng-show="!!listings.state && cities.length == 0" class="form-group">
+        <div class="col-sm-offset-5 col-sm-4">
+          <button class="btn btn-info" disabled>
+            loading <i class="fa fa-spinner fa-spin"></i>
+          </button>
+        </div>
+      </div>
+
+      <div ng-show="cities.length > 0" class="form-group has-feedback has-warning" ng-class="{
+        'has-warning': searchForm.searchCity.$pristine,
+        'has-error': searchForm.searchCity.$invalid && !searchForm.searchCity.$pristine,
+        'has-success': searchForm.searchCity.$valid
+      }">
+        <label class="control-label col-sm-3"></label>
+        <div class="col-sm-6">
+            <select class="form-control ng-pristine ng-invalid-required" ng-options="city.name for city in cities track by city.name" ng-model="listings.city" required ng-change="getCities()">
+              <option value="" selected> Select Cities </option>
+            </select>
+            <span ng-show="searchForm.searchCity.$pristine" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+            <span ng-show="searchForm.searchCity.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
+            <span ng-show="searchForm.searchCity.$invalid && !searchForm.searchCity.$pristine" class="glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+      </div>
+      -->
+      <form novalidate name="searchForm" class="form-horizontal" role="form" ng-submit="submitForm()">
+      <p class="small text-center text-success" ng-show="searchForm.searchTerm.$dirty && searchForm.searchTerm.$valid">
+        You're searching for: "{{listings.term}}"
+      </p>
+      <div class="form-group has-feedback has-warning" ng-class="{
+        'has-warning': searchForm.searchTerm.$pristine,
+        'has-error': searchForm.searchTerm.$invalid && !searchForm.searchTerm.$pristine,
+        'has-success': searchForm.searchTerm.$valid
+      }">
+        <label class="control-label col-sm-3" for="searchTerm"></label>
+        <div class="col-sm-6">
+          <input name="searchTerm" type="text" ng-model="listings.term" class="form-control ng-pristine ng-invalid-required" typeahead="city.city + ', ' + city.state_code for city in cities | filter:$viewValue | limitTo:10" id="searchTerm" placeholder="Enter City or Zip Code" required>
+          <span ng-show="searchForm.searchTerm.$pristine" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+          <span ng-show="searchForm.searchTerm.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
+          <span ng-show="searchForm.searchTerm.$invalid && !searchForm.searchTerm.$pristine" class="glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+      </div>
+      <div class="form-group">        
+        <div class="col-sm-offset-5 col-sm-4">
+          <button ng-disabled="!searchForm.$valid" type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-search"></span> Search
+          </button>
+        </div>
+      </div>
+      </form> 
+    </div>
+  <div class="jumbotron">
+  </div>
+</div> 
