@@ -16,3 +16,11 @@ gem 'restart'
 gem 'sidekiq'
 #Redis Sever
 gem 'redis'
+
+gem 'haversine'
+
+gem 'geocoder'
+
+gem 'activerecord'
+
+gem 'sinatra-activerecord'

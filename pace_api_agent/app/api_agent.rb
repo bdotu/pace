@@ -1,6 +1,10 @@
 require 'sinatra'
 require 'json'
-require './pace_api_agent/lib/crawler'
+require 'geocoder'
+# require 'active_record'
+# require 'sinatra/activerecord'
+require './lib/crawler'
+# require './misc/nearby_locations'
 
 
 before do
@@ -26,4 +30,9 @@ end
 post '/getListings' do
   crawler = CrawlerHelper.new
   crawler.crawl(params[:location])
+end
+
+get '/nearby/:city' do
+  Geocoder.search("#{params['city']}").inspect
+  # Geocoder.search("Nashville TN").inspect
 end
