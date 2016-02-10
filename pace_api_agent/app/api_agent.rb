@@ -1,7 +1,9 @@
 require 'sinatra'
 require 'json'
 require '../lib/crawler'
-
+require 'geocoder'
+# require 'active_record'
+# require 'sinatra/activerecord'
 
 before do
   content_type :json
@@ -36,4 +38,9 @@ post '/getListings' do
   return response
   #{result: params[:message]}.to_json
 
+end
+
+get '/nearby/:city' do
+  Geocoder.search("#{params['city']}").inspect
+  # Geocoder.search("Nashville TN").inspect
 end
