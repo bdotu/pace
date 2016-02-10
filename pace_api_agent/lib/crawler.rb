@@ -2,7 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class CrawlerHelper
-  BASE_URL = "http://www.zillow.com"
+  BASE_URL = "http://www.zillow.com1"
 
   def crawl(city_state, listing_page)
     properties = Hash.new{|property,price| property[price] = []}
