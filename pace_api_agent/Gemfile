@@ -2,12 +2,11 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 #Sql gem
-gem 'mysql'
+#gem 'mysql'
 #Crawler gems
 gem 'nokogiri'
 #Web server gem for sinatra. Set up config file
-gem 'shotgun'
 
-gem 'sqlite3'
+#gem 'sqlite3'
 
 gem 'restart'

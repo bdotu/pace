@@ -39,12 +39,14 @@ var app = angular.module('PACEApp', ['ngRoute', 'ui.bootstrap'])
 	return factory;
 }])
 
-.factory('ListingsFactory', ['$http', '$location', function($http, $location){
+.factory('ListingsFactory', ['$http', '$location', '$q', function($http, $location, $q){
 	
 	var factory = {};
-	var listings = {};
+	var listings = [];
 
+	/*
 	factory.setListings = function(term){	
+	  console.time("Sync - listings retrieval time");
 	  var address = term.replace(/, /g, "-");
 	  address = address.toLowerCase().replace(/ /g, "");
 	  console.log("address: " + address);
@@ -56,8 +58,37 @@ var app = angular.module('PACEApp', ['ngRoute', 'ui.bootstrap'])
 	  	  console.log(data);
 	  	  listings = data.homes;
 		  console.log(listings);
+		  console.timeEnd("Sync - listings retrieval time");
 		  $location.path('/result');
 	  });
+	};
+	*/
+
+	factory.setListings = function(term) {
+		console.time("Async - listings retrieval time");
+		var location = term.replace(/, /g, "-");
+		location = location.toLowerCase().replace(/ /g, "");
+		var listingsPromises = [];
+
+		for (var i = 1; i <= 5; i++){
+			var deferred = $q.defer(); // Create new instance of deferred
+			var address_information = {"location": location, "listing_page": i};
+			listingsPromises.push($http.post("http://localhost:4567/getListings", address_information));
+		}
+
+		$q.all(listingsPromises).then(function(results){
+			console.log(results);
+			for(var i = 0; i < results.length; i++) {
+				//results[i] contatins data which contains information for apartments and homes.
+				if (!!results[i]) {
+					listings = listings.concat(results[i].data.homes);
+				}
+			}
+			console.log(listings);
+			console.timeEnd("Async - listings retrieval time");
+			$location.path('/result');
+		});
+
 	};
 	
 	factory.getListings = function(){
