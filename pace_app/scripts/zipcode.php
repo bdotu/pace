@@ -5,9 +5,9 @@
 	$zip = $request->zip;
 
 	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "us_address";
+	$username = "paceAdmin";
+	$password = "pace";
+	$dbname = "pace";
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 

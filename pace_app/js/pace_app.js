@@ -73,7 +73,7 @@ var app = angular.module('PACEApp', ['ngRoute', 'ui.bootstrap'])
 		for (var i = 1; i <= 5; i++){
 			var deferred = $q.defer(); // Create new instance of deferred
 			var address_information = {"location": location, "listing_page": i};
-			listingsPromises.push($http.post("http://localhost:4567/getListings", address_information));
+			listingsPromises.push($http.post("http://localhost:9393/getListings", address_information));
 		}
 
 		$q.all(listingsPromises).then(function(results){
