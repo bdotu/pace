@@ -37,6 +37,9 @@
   color: #fff;
   background-color: #428bca;
 }
+.top-buffer {
+  margin-top: 100px;
+}
 
 li {
   list-style: none;
@@ -45,4 +48,8 @@ li {
 blockquote {
   border-left-color: darkred;
   font-size: 13px;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }

@@ -1,126 +1,73 @@
 <div class="jumbotron">
-	<div class="container" class="ng-scope" style="width: 50%; margin: 0 auto">
-	
-	<form novalidate name="signUpForm" ng-submit="signUp()">
-
-<!-- First Name  -->
-      <div class="form-group has-feedback" 
-     ng-class="{ 'has-warning': signUpForm.fname.$invalid, 
-     'has-error' : signUpForm.fname.$invalid && !signUpForm.fname.$pristine, 
-     'has-success': signUpForm.fname.$valid}">
-        <input type="text" class="form-control" ng-model="signUpFormData.fname" 
-         name="fname" placeholder="First Name" required>
-  <span class="glyphicon glyphicon-warning-sign form-control-feedback" 
-        ng-show="signUpForm.fname.$pristine" aria-hidden="true"></span>
-  <span ng-show="signUpForm.fname.$invalid && signInForm.fname.$dirty" 
-        class="glyphicon glyphicon-remove form-control-feedback"></span>
-  <span ng-show="signUpForm.fname.$valid" 
-        class="glyphicon glyphicon-ok form-control-feedback"></span>
-        <div ng-show="signUpForm.fname.$invalid && signUpForm.fname.$dirty"
-       class="help-block">
-    <div ng-show="signUpForm.fname.$error.required">First name is required!</div>
-  </div>
-      </div>
-
-<!-- Middle Name-->
-
-<div class="form-group">
-      <input type="text" placeholder="Middle Name"  class="form-control" name="affiliation" ng-model="signUpFormData.mname"  />
-    </div>
-
-<!-- Last Name -->
-
- <div class="form-group has-feedback" 
-     ng-class="{ 'has-warning': signUpForm.lname.$invalid, 
-     'has-error' : signUpForm.lname.$invalid && !signUpForm.lname.$pristine, 
-     'has-success': signUpForm.lname.$valid}">
-        <input type="text" class="form-control" ng-model="signUpFormData.lname" 
-         name="lname" placeholder="Last Name" required>
-  <span class="glyphicon glyphicon-warning-sign form-control-feedback" 
-        ng-show="signUpForm.lname.$pristine" aria-hidden="true"></span>
-  <span ng-show="signUpForm.lname.$invalid && signInForm.lname.$dirty" 
-        class="glyphicon glyphicon-remove form-control-feedback"></span>
-  <span ng-show="signUpForm.lname.$valid" 
-        class="glyphicon glyphicon-ok form-control-feedback"></span>
-        <div ng-show="signUpForm.lname.$invalid && signUpForm.lname.$dirty"
-       class="help-block">
-    <div ng-show="signUpForm.lname.$error.required">Last name is required!</div>
-  </div>
-      </div>
-
-
-<!-- Email --> 
-      <div class="form-group has-feedback" ng-class="{'has-warning': signUpForm.email.$invalid,
-     'has-error': signUpForm.email.$invalid && signUpForm.email.$dirty,
-     'has-success': signUpForm.email.$valid}">
-  <input type="email" name="email" ng-model="signUpFormData.email" 
-         class="form-control" placeholder="Email e.g. me@example.com" required>
-  <span class="glyphicon glyphicon-warning-sign form-control-feedback" 
-        ng-show="signUpForm.email.$pristine" aria-hidden="true"></span>
-  <span ng-show="signUpForm.email.$invalid && signUpForm.email.$dirty" 
-        class="glyphicon glyphicon-remove form-control-feedback"></span>
-  <span ng-show="signUpForm.email.$valid" 
-        class="glyphicon glyphicon-ok form-control-feedback"></span>
-        <div ng-show="signUpForm.email.$invalid && signUpForm.email.$dirty"
-       class="help-block">
-    <div ng-show="signUpForm.email.$error.required">Email is required!</div>
-  </div>
-      </div>
-
-<!-- Password -->
-<div class="form-group has-feedback" ng-class="{'has-warning': signUpForm.password.$invalid,
-     'has-error': signUpForm.password.$invalid && signUpForm.password.$dirty,
-     'has-success': signUpForm.passwird.$valid}">
-<input type="password" id="password" name="password"  class="form-control"
-    ng-model="signUpFormData.password" required placeholder="Password" />
-<span class="glyphicon glyphicon-warning-sign form-control-feedback" 
-        ng-show="signUpForm.password.$pristine" aria-hidden="true"></span>
-  <span ng-show="signUpForm.password.$invalid && signUpForm.password.$dirty" 
-        class="glyphicon glyphicon-remove form-control-feedback"></span>
-  <span ng-show="signUpForm.password.$valid" 
-        class="glyphicon glyphicon-ok form-control-feedback"></span>
-        <div ng-show="signUpForm.password.$invalid && signUpForm.password.$dirty"
-       class="help-block">
-    <div ng-show="signUpForm.password.$error.required">Password is required!</div>
-  </div>
-  </div>
-
-<!-- Confirm Password -->
-<div class="form-group has-feedback" ng-class="{'has-warning': signUpForm.confirm_password.$invalid,
-     'has-error': signUpForm.confirm_password.$invalid && signUpForm.confirm_password.$dirty,
-     'has-success': signUpForm.confirm_passwird.$valid}">
-<input type="password" id="confirm_password" name="confirm_password"  class="form-control"
-    ng-model="signUpFormData.confirm_password" repeat-password="password" required placeholder="Confirm Password" />
-<span class="glyphicon glyphicon-warning-sign form-control-feedback" 
-        ng-show="signUpForm.confirm_password.$pristine" aria-hidden="true"></span>
-  <span ng-show="signUpForm.confirm_password.$invalid && signUpForm.confirm_password.$dirty" 
-        class="glyphicon glyphicon-remove form-control-feedback"></span>
-  <span ng-show="signUpForm.confirm_password.$valid" 
-        class="glyphicon glyphicon-ok form-control-feedback"></span>
-        <div ng-show="signUpForm.confirm_password.$invalid && signUpForm.confirm_password.$dirty"
-       class="help-block">
-    <div ng-show="signUpForm.confirm_password.$error.required">Passwords do not match!</div>
-  </div>
-  </div>
-
-<!-- Interests -->
-
-<div class="form-group has-feedback" ng-class="{'has-warning': signUpForm.classification.$invalid,
-     'has-error': signUpForm.interests.$invalid && signUpForm.interests.$dirty,
-     'has-success': signUpForm.interests.$valid}">
-  <input type="text" class="form-control" ng-model="signUpFormData.interests" placeholder="Enter your Interests e.g. Playing soccer, Hiking, Biking etc." required>
-</div>
-
-<!--
-    <div class="form-group">
-      <input type="text" placeholder="Full Name" class="form-control" name="name" ng-model="author.name" required />
-      <p class="help-block" ng-if="signInForm.name.$error.required">The Full Name name is required</p>
-    </div>
--->
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-disabled="!signUpForm.$valid">Sign Up</button>
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <h1>Sign Up Form</h1> <hr/>
+              <form name="signUpForm" novalidate ng-submit="submitForm()">
+            <!--First Name-->
+            <div class="form-group has-feedback" ng-class=" {
+            'has-warning': signUpForm.fname.$pristine,
+            'has-error': signUpForm.fname.$invalid && !signUpForm.fname.$pristine,
+            'has-success': signUpForm.fname.$valid}">
+              <input type="text" class="form-control" ng-model="signUpData.fname" name="fname" placeholder="First Name" required>
+              <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="signUpForm.fname.$pristine"></span>
+              <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="signUpForm.fname.$invalid && !signUpForm.fname.$pristine"></span>
+              <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="signUpForm.fname.$valid"></span>
+            </div>
+            <!--Last Name-->
+            <div class="form-group has-feedback" ng-class=" {
+            'has-warning': signUpForm.lname.$pristine,
+            'has-error': signUpForm.lname.$invalid && !signUpForm.lname.$pristine,
+            'has-success': signUpForm.lname.$valid}">
+              <input type="text" class="form-control" ng-model="signUpData.lname" name="lname" placeholder="Last Name" required>
+              <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="signUpForm.lname.$pristine"></span>
+              <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="signUpForm.lname.$invalid && !signUpForm.lname.$pristine"></span>
+              <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="signUpForm.lname.$valid"></span>
+            </div>
+            <!--Email-->
+            <div class="form-group has-feedback" ng-class=" {
+            'has-warning': signUpForm.email.$pristine,
+            'has-error': signUpForm.email.$invalid && !signUpForm.email.$pristine,
+            'has-success': signUpForm.email.$valid}">
+              <input type="email" class="form-control" ng-model="signUpData.email" name="email" placeholder="Email Address" check-email="signUpData.email" required>
+              <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="signUpForm.email.$pristine"></span>
+              <span class="form-control-feedback" ng-show="signUpForm.email.$invalid && !signUpForm.email.$pristine" aria-hidden="true">
+                <i class="fa fa-spinner fa-pulse"></i>
+              </span>
+              <span ng-show="signUpForm.email.$invalid && !signUpForm.email.$pristine"><code>Email Address must be Valid and Unique</code></span>
+              <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="signUpForm.email.$valid"></span>
+            </div>
+            <!--Password-->
+            <div class="form-group has-feedback" ng-class=" {
+            'has-warning': signUpForm.password.$pristine,
+            'has-error': signUpForm.password.$invalid && !signUpForm.password.$pristine,
+            'has-success': signUpForm.password.$valid}">
+              <input type="password" class="form-control" ng-model="signUpData.password" name="password" placeholder="Password" required>
+              <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="signUpForm.password.$pristine"></span>
+              <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="signUpForm.password.$invalid && !signUpForm.password.$pristine"></span>
+              <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="signUpForm.password.$valid"></span>
+            </div>
+            <!--Confirm Password-->
+            <div class="form-group has-feedback" ng-class=" {
+            'has-warning': signUpForm.cpassword.$pristine,
+            'has-error': signUpForm.cpassword.$invalid && !signUpForm.cpassword.$pristine,
+            'has-success': signUpForm.cpassword.$valid}">
+              <input type="password" class="form-control" ng-model="signUpData.cpassword" name="cpassword" placeholder="Confirm Password" password-match="signUpData.password" required>
+              <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="signUpForm.password.$pristine"></span>
+              <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="signUpForm.cpassword.$invalid && !signUpForm.cpassword.$pristine"></span>
+              <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="signUpForm.cpassword.$valid"></span>
+            </div>
+            <!--Interests-->
+            <div class="form-group" ng-class=" {
+            'has-success': signUpForm.interests.$pristine || signUpForm.interests.$valid}">
+              <input type="text" class="form-control" ng-model="signUpData.interests" name="interests" placeholder="Interests e.g. Hiking, Biking">
+            </div>
+            <!--Bio-->
+            <button ng-disabled="!signUpForm.$valid" type="submit" class="btn btn-success">Submit</button>
+          </form>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
         </div>
-    </form>
-
-	</div>
 </div>

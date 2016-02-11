@@ -1,22 +1,62 @@
-<div class="modal-header">
-        <h3 class="modal-title">Compose Message</h3>
+<div class="container">
+    <div class="top-buffer row">
+        <form class="form-horizontal" role="form">
+                <div class="col-sm-12">
+                        <div class="form-group has-feedback"> 
+                            <input class="form-control" type="text" placeholder="Search Your Messages" ng-model="search">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            <br><br>
+                        </div>
+            </div>
+        </form>
+        <div class="col-sm-3 col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li ng-class="inboxOrSentMail.inbox ? 'active' : ''"><a style="cursor:pointer" ng-click="toggleMail('inbox')"><span class="badge pull-right">{{inbox.length}}</span> Inbox </a>
+                </li>
+                <li ng-class="inboxOrSentMail.sentmail ? 'active' : ''"><a style="cursor:pointer" ng-click="toggleMail('sentmail')"><span class="badge pull-right">{{sentMail.length}}</span>Sent Mail</a></li>
+            </ul>
         </div>
-        <div class="modal-body">
-            
-            <form name="messageForm">
-              <!--Subject-->
-              <div class="form-group" ng-class=" {
-					  'has-success': messageForm.subject.$pristine || messageForm.subject.$valid}">
-					    <input type="text" class="form-control" ng-model="message.subject" name="subject" placeholder="Subject">
-			  </div>
-			  <!--Message Body-->
-			  <div class="form-group" ng-class=" {
-			  'has-success': messageForm.body.$pristine || messageForm.body.$valid}">
-			  	<textarea style="resize:none" class="form-control" name="body" rows="5" ng-model="message.body" placeholder="Short Bio"></textarea>
-			  </div>
+        <div class="col-sm-9 col-md-10">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li ng-show="inboxOrSentMail.inbox" class="active">
+                    <a><span class="glyphicon glyphicon-inbox"></span> Inbox</a>
+                </li>
+                <li ng-show="inboxOrSentMail.sentmail" class="active">
+                    <a><span class="glyphicon glyphicon-inbox"></span> Sent Mail</a>
+                </li>                    
+            </ul>
 
+            <!-- Inbox & Sent Mail -->    
+            <div class="tab-content">
+                <accordion style="text-decoration:none" ng-repeat="message in inboxOrSentMail.inbox ? inbox : sentMail | filter:search">
+                    <accordion-group>
+                      <accordion-heading>
+                            <div class="row">
+                                <div class="col-sm-4">{{message.firstname + " " + message.lastname}}</div>
+                                <div class="col-sm-6">{{message.subject}}</div>
+                                <div class="col-sm-2">
+                                    <div style="cursor:default" class="btn btn-xs btn-primary" disabled type="button">{{message.delivery_time}}</div>
+                                </div>
+                            </div>
+                      </accordion-heading>
+                      {{message.body}}<br/>
+                       <span class="pull-right">
+
+                            <div style="cursor:default" ng-show="message.messageSent !== undefined && !message.messageSent" class="btn btn-xs btn-warning">Sending Message <i class="fa fa-spinner fa-spin"></i></div>
+
+                            <div style="cursor:default" ng-show="message.messageSent" class="btn btn-xs btn-success">Message Sent <i class="glyphicon glyphicon-check"></i></div>
+
+                            <div style="cursor:default" ng-show="message.messageDeleted !== undefined && !message.messageDeleted" class="btn btn-xs btn-warning">Deleting Message <i class="fa fa-spinner fa-spin"></i></div>
+
+                            <div style="cursor:default" ng-show="message.messageDeleted" class="btn btn-xs btn-success">Message Deleted <i class="glyphicon glyphicon-check"></i></div>
+
+                            <button class="btn btn-xs btn-info" ng-click="reply(message)"> <i class="fa fa-reply"> Reply </i> </button> 
+                            <button class="btn btn-xs btn-danger" ng-click="delete(message)"> <i class="fa fa-trash"> Delete </i> </button>
+                       </span>
+                    </accordion-group>
+                </accordion>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-disabled="!messageForm.$valid" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
+    </div>
+</div>
