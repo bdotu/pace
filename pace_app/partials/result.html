@@ -18,13 +18,20 @@
 						<blockquote>
 							<!--<img ng-src="{{item.volumeInfo.imageLinks.thumbnail}}" class="img-thumbnail" alt="Thumbnail" width="40">-->
 							<div class="row">
-							<div class="col-sm-2">
-								<br/>
+							<!--	
+							<div class="col-sm-1">
 								<input class="checkbox" type="checkbox" ng-model="checkedListing[item.address]" value="">
 							</div>
-							<div class="col-sm-10">
+							-->
+							<div class="col-sm-3">
+								<a href="#"  class="thumbnail" alt="Thumbnail" width="30">
+							      <img ng-show="item.property_image_url.length !== 0" ng-src="{{item.property_image_url}}">
+							      <img ng-show="item.property_image_url.length === 0" src="img/no_image.png">
+							    </a>
+							</div>
+							<div class="col-sm-9">
 								{{item.address}} <br/> 
-								{{item.price}} <br/>
+								<em>{{item.price}}</em> <br/>
 							</div>
 							</div>
 						</blockquote>

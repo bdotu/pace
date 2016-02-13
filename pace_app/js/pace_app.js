@@ -134,7 +134,7 @@ var app = angular.module('PACEApp', ['ngRoute', 'ui.bootstrap'])
 		var location = term.replace(/, /g, "-");
 		location = location.toLowerCase().replace(/ /g, "");
 		var listingsPromises = [];
-		var numberOfListingsPage = 1;
+		var numberOfListingsPage = 5;
 
 		for (var i = 1; i <= numberOfListingsPage; i++){
 			var deferred = $q.defer(); // Create new instance of deferred
@@ -388,6 +388,7 @@ var app = angular.module('PACEApp', ['ngRoute', 'ui.bootstrap'])
 	$scope.init();
 
 	$scope.submitForm = function(){
+		$scope.gettingListings = true; // Display loading donut on submit
 		console.log($scope.listings.term);
 		if(!isNaN(parseInt($scope.listings.term))) {
 			// Zip Code Selection
