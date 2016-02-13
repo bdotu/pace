@@ -144,6 +144,7 @@ var app = angular.module('PACEApp', ['ngRoute', 'ui.bootstrap'])
 
 		$q.all(listingsPromises).then(function(results){
 			console.log(results);
+			listings = [];
 			for(var i = 0; i < results.length; i++) {
 				//results[i] contatins data which contains information for apartments and homes.
 				if (!!results[i]) {
@@ -379,6 +380,7 @@ var app = angular.module('PACEApp', ['ngRoute', 'ui.bootstrap'])
 	$scope.listings = {};
 	$scope.states = [];
 	$scope.cities = [];
+	$scope.gettingListings = false;
 	$scope.init = function(){
 		$scope.listings;
 		AddressFactory.getCityInformation().then(function(res){

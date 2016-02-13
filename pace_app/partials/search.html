@@ -12,7 +12,7 @@
       }">
         <label class="control-label col-sm-3" for="searchTerm"></label>
         <div class="col-sm-6">
-          <input name="searchTerm" type="text" ng-model="listings.term" class="form-control ng-pristine ng-invalid-required" typeahead="city.city + ', ' + city.state_code for city in cities | filter:$viewValue | limitTo:10" id="searchTerm" placeholder="Enter City or Zip Code" required>
+          <input name="searchTerm" type="text" ng-model="listings.term" class="form-control ng-pristine ng-invalid-required" typeahead="city.city + ', ' + city.state_code for city in cities | filter:$viewValue | limitTo:10" id="searchTerm" placeholder="Enter City or Zip Code" required ng-disabled="gettingListings">
           <span ng-show="searchForm.searchTerm.$pristine" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
           <span ng-show="searchForm.searchTerm.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
           <span ng-show="searchForm.searchTerm.$invalid && !searchForm.searchTerm.$pristine" class="glyphicon glyphicon-remove form-control-feedback"></span>
