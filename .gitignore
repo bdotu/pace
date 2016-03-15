@@ -17,3 +17,7 @@
 
 ~/test.rb
 /*.rdb
+~/app/*.orig
+~/lib/*.orig
+~/misc/*.orig
+/*.orig

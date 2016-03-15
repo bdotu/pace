@@ -1,0 +1,26 @@
+<div class="modal-header">
+        <h3 class="modal-title">Compose Message</h3>
+        </div>
+        <div class="modal-body">
+            
+            <form name="messageForm">
+              <!--Subject-->
+              <div class="form-group has-feedback" ng-class=" {
+              'has-error' : messageForm.subject.$invalid && !messageForm.subject.$pristine,
+              'has-warning': messageForm.subject.$pristine,
+              'has-success': messageForm.subject.$valid}">
+                <input type="text" class="form-control" ng-model="message.subject" name="subject" placeholder="Subject" ng-required="true">
+			  </div>
+			  <!--Message Body-->
+			  <div class="form-group has-feedback" ng-class=" {
+              'has-error' : messageForm.body.$invalid && !messageForm.body.$pristine,
+              'has-warning': messageForm.body.$pristine,
+              'has-success': messageForm.body.$valid}">
+                <textarea style="resize:none" class="form-control" name="body" rows="5" ng-model="message.body" placeholder="Enter Message" ng-required="true"></textarea>
+			  </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-disabled="!messageForm.$valid" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>

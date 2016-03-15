@@ -1,6 +1,6 @@
 #Testing out new gems
 
-require 'geocoder'
+# require 'geocoder'
 require 'open-uri'
 require 'nokogiri'
 require 'json'
@@ -57,8 +57,8 @@ class City
 end
 
 city = City.new
-# city.get_details("seattle-wa")
-puts city.get_city_info("Nashville_TN")
+city.get_details("seattle-wa")
+# puts city.get_city_info("Nashville_TN")
 
 
 # Use geocoder to get latitude and longitude of any given city

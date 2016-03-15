@@ -1,0 +1,54 @@
+<<<<<<< HEAD
+source 'https://rubygems.org'
+
+gem 'sinatra'
+#Sql gem
+gem 'mysql'
+#Crawler gems
+gem 'nokogiri'
+#Web server gem for sinatra. Set up config file
+gem 'shotgun'
+
+gem 'sqlite3'
+
+gem 'restart'
+
+#Sidekiq gem to run background jobs
+gem 'sidekiq'
+#Redis Sever
+gem 'redis'
+
+gem 'haversine'
+
+gem "geocoder", git: "git://github.com/alexreisner/geocoder.git"
+
+gem 'rake'
+
+gem 'sinatra-activerecord'
+=======
+source 'https://rubygems.org'
+
+gem 'sinatra'
+#Sql gem
+#gem 'mysql'
+#Crawler gems
+gem 'nokogiri'
+#Web server gem for sinatra. Set up config file
+
+#gem 'sqlite3'
+
+gem 'restart'
+
+#Sidekiq gem to run background jobs
+gem 'sidekiq'
+#Redis Sever
+gem 'redis'
+
+gem 'haversine'
+
+gem 'geocoder'
+
+gem 'activerecord'
+
+gem 'sinatra-activerecord'
+>>>>>>> 8478737a9db41bc26f7c34925bf4557bc2b0e497

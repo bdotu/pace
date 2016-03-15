@@ -1,7 +1,9 @@
 require 'sinatra'
 require 'json'
+require '../lib/crawler'
+# require 'geocoder'
+# require 'active_record'
 require 'sinatra/activerecord'
-require './lib/crawler'
 require './lib/location'
 
 set :database, {adapter: "sqlite3", database:"locations.sqlite3"}
@@ -16,21 +18,31 @@ before do
           'Access-Control-Allow-Headers' => 'Content-Type'
 end
 
-get '/hi' do
-  "Hello World!!!"
+options '/getListings' do
+    200
 end
 
-#puts listing from the crawl in the browser
-get '/getListings/:city_state' do
+get '/getListings' do
   crawler = CrawlerHelper.new
-  # puts params['city_state']
-  crawler.crawl(params['city_state'])
+  crawler.crawl("nashville-tn", 1)
 end
 
-#same priniciple applies in the case of a post request
 post '/getListings' do
+  puts "call successful"
+  begin
+      params.merge! JSON.parse(request.env["rack.input"].read)
+  rescue JSON::ParserError
+      logger.error "Cannot parse request body."
+  end
+  puts params[:location]
+  puts params[:listing_page]
   crawler = CrawlerHelper.new
-  crawler.crawl(params[:location])
+  response = crawler.crawl(params[:location], params[:listing_page])
+  print response.length
+  #puts response
+  return response
+  #{result: params[:message]}.to_json
+
 end
 
 # get '/nearby/:city_state' do
