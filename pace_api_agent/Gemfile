@@ -19,8 +19,8 @@ gem 'redis'
 
 gem 'haversine'
 
-gem 'geocoder'
+gem "geocoder", git: "git://github.com/alexreisner/geocoder.git"
 
-gem 'activerecord'
+gem 'rake'
 
 gem 'sinatra-activerecord'

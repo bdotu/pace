@@ -1,11 +1,12 @@
 require 'sinatra'
 require 'json'
-require 'geocoder'
-# require 'active_record'
-# require 'sinatra/activerecord'
+require 'sinatra/activerecord'
 require './lib/crawler'
-# require './misc/nearby_locations'
+require './lib/location'
 
+set :database, {adapter: "sqlite3", database:"locations.sqlite3"}
+
+register Sinatra::ActiveRecordExtension
 
 before do
   content_type :json
@@ -32,7 +33,18 @@ post '/getListings' do
   crawler.crawl(params[:location])
 end
 
-get '/nearby/:city' do
-  Geocoder.search("#{params['city']}").inspect
-  # Geocoder.search("Nashville TN").inspect
+# get '/nearby/:city_state' do
+#   location = Location.new
+#   # location.connection
+#   location.near("#{params['city_state']}", 10).inspect
+#   # Geocoder.search("#{params['city_state']}").inspect
+#   # Geocoder.search("Nashville TN").inspect
+# end
+
+get '/nearby' do
+  # Geocoder.coordinates("Nashville, TN").inspect
+  nearby_cities = Location.near("Nashville, TN", 25, :order => "distance")
+  # nearby_cities.geocoded
+  nearby_cities.inspect #Rake geocode:all not working
+  # puts nearby_cities.blank?
 end
